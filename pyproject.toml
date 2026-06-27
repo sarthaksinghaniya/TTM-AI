@@ -1,0 +1,41 @@
+[project]
+name = "hanuplanner-brain"
+version = "0.1.0"
+description = "HanuPlanner scheduling engine core models"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pydantic>=2.0.0",
+    "networkx>=3.0",
+    "numpy>=1.26.0",
+    "pandas>=2.0.0",
+    "matplotlib>=3.8.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "mypy>=1.9.0",
+    "ruff>=0.3.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.mypy]
+strict = true
+python_version = "3.13"
+ignore_missing_imports = true
+
+[tool.ruff]
+target-version = "py313"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "D", "I", "UP", "RUF"]
+ignore = ["D100", "D104"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"

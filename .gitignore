@@ -1,0 +1,29 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Tests and Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.cov/
+
+# Mypy Cache
+.mypy_cache/
+
+# Ruff Cache
+.ruff_cache/
+
+# Distribution / Build
+dist/
+build/
+*.egg-info/
