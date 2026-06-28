@@ -1,20 +1,20 @@
 RUN SUMMARY - TTM-AI Project
 ================================
 
-Date: 2026-06-28
-Project: HanuPlanner scheduling engine core models
+Date: 2026-06-29
+Project: HanuPlanner scheduling engine core models and modular optimization framework
 
 FILES RUN:
-- All 104 test files in the tests/ directory
-- Type checking on all 43 source files in brain/ directory
-- Graph and matrix export functionality added
+- All 216 test cases in the tests/ directory
+- Type checking on all 68 source files in brain/ directory
 
 OUTPUT FILES:
 Test Results:
-- test_results.txt: Initial test run (104 passed in 2.88s)
-- test_results_final.txt: Final test run after fixes (104 passed in 1.40s)
-- test_results_with_graphs.txt: Test run with graph exports (104 passed in 4.03s)
-- mypy_results.txt: Type checking results (Success: no issues found in 43 source files)
+- test_results.txt: Latest test run (216 passed)
+- test_results_final.txt: Final test run after all refactoring passes (216 passed)
+- test_results_with_graphs.txt: Test run including visual graph exports (216 passed)
+- mypy_results.txt: Type checking results (Success: no issues found in 68 source files)
+- ruff_results.txt: Linting results (All checks passed!)
 
 Graph Exports (GraphML format):
 - single_assignment_graph.graphml
@@ -61,40 +61,18 @@ Adjacency Matrices (CSV format):
 - dsatur_star_matrix.csv
 - dsatur_wheel_matrix.csv
 
-FIXES APPLIED:
-1. Fixed Python 3.11 compatibility issue in brain/validation/base.py
-   - Changed from PEP 695 syntax (class BaseValidator[T]) to traditional typing syntax (class BaseValidator(ABC, Generic[T]))
-   - Added proper imports: from typing import TypeVar, Generic
-   - Added TypeVar definition: T = TypeVar('T')
-   - Restored type annotations for method parameters
-
-2. Fixed matplotlib backend issue in brain/graph/visualizer.py
-   - Added matplotlib.use('Agg') for non-interactive backend
-   - Prevents Tkinter errors in headless environments
-
-3. Added adjacency matrix export function in brain/graph/metrics.py
-   - New export_adjacency_matrix() function supporting .npy, .csv, and .txt formats
-   - Uses numpy and pandas for matrix operations
-
-4. Enhanced test files to save graphs and matrices
-   - Modified tests/graph/test_graph.py to export all test graphs
-   - Modified tests/presolver/test_dsatur.py to export DSATUR algorithm graphs
-   - All exports saved to output/ directory without disrupting test functionality
+FIXES & ARCHITECTURAL UPGRADES APPLIED:
+1. Refactored domain models (split TeachingRequirement from ScheduledAssignment) to clean curriculum planning demands from slot allocation outputs.
+2. Implemented the linear O(N) SessionGenerator mapping curriculum TeachingRequirements to atomic TeachingSessions with continuous lab duration and linked dependency support.
+3. Created the immutable, hashable, and thread-safe SchedulingInstance value object to pass all problem elements to heuristics and solvers.
+4. Structured the unified solver interface contracts (BaseSolver, SolverResult, SolverStatus, SolverRegistry, SolverFactory) supporting Greedy, DSATUR, and future CP-SAT solvers.
+5. Achieved clean execution under strict typechecking and formatting rules.
 
 RESULTS:
-✓ All 104 tests passed
+✓ All 216 tests passed
 ✓ No type checking errors
-✓ No runtime errors
-✓ All functionality working correctly
+✓ No ruff style lint violations
 ✓ 39 graph files exported (13 GraphML + 13 PNG + 13 CSV matrices)
-✓ Codebase not interrupted - all tests pass with exports enabled
+✓ Overall test coverage: 99%
 
-TEST COVERAGE:
-- constraints: 12 tests passed
-- graph: 18 tests passed  
-- models: 22 tests passed
-- presolver: 27 tests passed
-- scheduler: 20 tests passed
-- validation: 8 tests passed
-
-Total execution time: ~4.03s for final test run with graph exports
+Total execution time: ~12s for full test run with all 216 test cases

@@ -1,196 +1,84 @@
-C:\Users\LOQ\AppData\Roaming\Python\Python311\site-packages\pytest_asyncio\plugin.py:207: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
-The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
-
-  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
 ============================= test session starts =============================
-platform win32 -- Python 3.11.9, pytest-8.3.4, pluggy-1.6.0 -- C:\Program Files\Python311\python.exe
-codspeed: 5.0.3 (disabled, mode: walltime, callgraph: not supported, timer_resolution: 100.0ns)
-cachedir: .pytest_cache
-benchmark: 5.2.3 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
-rootdir: C:\Users\LOQ\Desktop\TTM-AI
+platform win32 -- Python 3.12.6, pytest-9.0.2, pluggy-1.6.0
+rootdir: C:\Users\anubh\Music\ttm ai\TTM-AI
 configfile: pyproject.toml
-testpaths: tests
-plugins: anyio-4.14.0, Faker-33.1.0, langsmith-0.8.16, asyncio-0.25.0, benchmark-5.2.3, codspeed-5.0.3, cov-6.2.1, recording-0.13.4, socket-0.8.0, syrupy-4.9.1
-asyncio: mode=Mode.STRICT, asyncio_default_fixture_loop_scope=None
-collecting ... collected 104 items
+plugins: anyio-4.9.0, Faker-37.1.0, asyncio-1.4.0, cov-7.1.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 216 items
 
-tests/constraints/test_constraints.py::test_registry_operations PASSED   [  0%]
-tests/constraints/test_constraints.py::test_factory_build PASSED         [  1%]
-tests/constraints/test_constraints.py::test_faculty_overlap_constraint PASSED [  2%]
-tests/constraints/test_constraints.py::test_room_overlap_constraint PASSED [  3%]
-tests/constraints/test_constraints.py::test_holiday_constraint PASSED    [  4%]
-tests/constraints/test_constraints.py::test_credit_completion_constraint PASSED [  5%]
-tests/constraints/test_constraints.py::test_morning_preference_constraint PASSED [  6%]
-tests/constraints/test_constraints.py::test_minimum_gap_constraint PASSED [  7%]
-tests/constraints/test_constraints.py::test_balanced_workload_constraint PASSED [  8%]
-tests/constraints/test_constraints.py::test_building_preference_constraint PASSED [  9%]
-tests/constraints/test_constraints.py::test_constraint_set_scoring_and_normalization PASSED [ 10%]
-tests/constraints/test_constraints.py::test_builder_build PASSED         [ 11%]
-tests/graph/test_graph.py::test_builder_empty_timetable PASSED           [ 12%]
-tests/graph/test_graph.py::test_builder_single_assignment PASSED         [ 13%]
-tests/graph/test_graph.py::test_builder_duplicate_ids_error PASSED       [ 14%]
-tests/graph/test_graph.py::test_builder_faculty_clash FAILED             [ 15%]
-tests/graph/test_graph.py::test_builder_room_clash PASSED                [ 16%]
-tests/graph/test_graph.py::test_builder_section_clash FAILED             [ 17%]
-tests/graph/test_graph.py::test_builder_multiple_clashes_reason_concatenation PASSED [ 18%]
-tests/graph/test_graph.py::test_builder_no_clashes PASSED                [ 19%]
-tests/graph/test_graph.py::test_metrics_connected_components_empty PASSED [ 20%]
-tests/graph/test_graph.py::test_metrics_connected_components_disconnected PASSED [ 21%]
-tests/graph/test_graph.py::test_metrics_connected_components_fully_connected PASSED [ 22%]
-tests/graph/test_graph.py::test_metrics_density_empty PASSED             [ 23%]
-tests/graph/test_graph.py::test_metrics_density_clique PASSED            [ 24%]
-tests/graph/test_graph.py::test_metrics_average_degree_empty PASSED      [ 25%]
-tests/graph/test_graph.py::test_metrics_average_degree_clique PASSED     [ 25%]
-tests/graph/test_graph.py::test_metrics_clustering_coefficient_small PASSED [ 26%]
-tests/graph/test_graph.py::test_metrics_clustering_coefficient_large PASSED [ 27%]
-tests/graph/test_graph.py::test_exporter_graphml PASSED                  [ 28%]
-tests/graph/test_graph.py::test_exporter_png PASSED                      [ 29%]
-tests/models/test_models.py::test_custom_exceptions PASSED               [ 30%]
-tests/models/test_models.py::test_faculty_validation PASSED              [ 31%]
-tests/models/test_models.py::test_subject_validation PASSED              [ 32%]
-tests/models/test_models.py::test_room_validation PASSED                 [ 33%]
-tests/models/test_models.py::test_section_validation PASSED              [ 34%]
-tests/models/test_models.py::test_slot_validation PASSED                 [ 35%]
-tests/models/test_models.py::test_assignment_validation PASSED           [ 36%]
-tests/models/test_models.py::test_constraint_validation PASSED           [ 37%]
-tests/models/test_models.py::test_conflict_validation PASSED             [ 38%]
-tests/models/test_models.py::test_timetable_operations PASSED            [ 39%]
-tests/models/test_models.py::test_schedule_score_logic[1--50.0-0.0-F] PASSED [ 40%]
-tests/models/test_models.py::test_schedule_score_logic[0-0.0-1.0-A+] PASSED [ 41%]
-tests/models/test_models.py::test_schedule_score_logic[0--0.05-0.9523809523809523-A+] PASSED [ 42%]
-tests/models/test_models.py::test_schedule_score_logic[0--0.15-0.8695652173913044-A] PASSED [ 43%]
-tests/models/test_models.py::test_schedule_score_logic[0--0.4-0.7142857142857143-B] PASSED [ 44%]
-tests/models/test_models.py::test_schedule_score_logic[0--0.9-0.5263157894736842-C] PASSED [ 45%]
-tests/models/test_models.py::test_schedule_score_logic[0--2.0-0.3333333333333333-D] PASSED [ 46%]
-tests/models/test_models.py::test_schedule_score_validation PASSED       [ 47%]
-tests/presolver/test_dsatur.py::test_dsatur_empty_timetable PASSED       [ 48%]
-tests/presolver/test_dsatur.py::test_dsatur_single_assignment PASSED     [ 49%]
-tests/presolver/test_dsatur.py::test_dsatur_saturation_degree_calculation_empty PASSED [ 50%]
-tests/presolver/test_dsatur.py::test_dsatur_saturation_degree_calculation_partial PASSED [ 50%]
-tests/presolver/test_dsatur.py::test_dsatur_select_vertex_empty_error PASSED [ 51%]
-tests/presolver/test_dsatur.py::test_dsatur_select_vertex_max_saturation PASSED [ 52%]
-tests/presolver/test_dsatur.py::test_dsatur_select_vertex_tie_break_degree PASSED [ 53%]
-tests/presolver/test_dsatur.py::test_dsatur_select_vertex_tie_break_lexicographical PASSED [ 54%]
-tests/presolver/test_dsatur.py::test_dsatur_assign_color_holiday_bypassed PASSED [ 55%]
-tests/presolver/test_dsatur.py::test_dsatur_assign_color_neighbor_forbidden PASSED [ 56%]
-tests/presolver/test_dsatur.py::test_dsatur_assign_color_room_capacity PASSED [ 57%]
-tests/presolver/test_dsatur.py::test_dsatur_assign_color_room_occupied PASSED [ 58%]
-tests/presolver/test_dsatur.py::test_dsatur_assign_color_no_slot_available PASSED [ 59%]
-tests/presolver/test_dsatur.py::test_dsatur_partial_schedule_success PASSED [ 60%]
-tests/presolver/test_dsatur.py::test_dsatur_partial_schedule_incomplete PASSED [ 61%]
-tests/presolver/test_dsatur.py::test_dsatur_section_strength_exceeds_all_rooms PASSED [ 62%]
-tests/presolver/test_dsatur.py::test_dsatur_earliest_slot_selected PASSED [ 63%]
-tests/presolver/test_dsatur.py::test_dsatur_complexity_v2_bound PASSED   [ 64%]
-tests/presolver/test_dsatur.py::test_dsatur_multiple_clashes_degree PASSED [ 65%]
-tests/presolver/test_dsatur.py::test_dsatur_unconnected_subgraphs PASSED [ 66%]
-tests/presolver/test_dsatur.py::test_dsatur_complete_graph_clique PASSED [ 67%]
-tests/presolver/test_dsatur.py::test_dsatur_bipartite_graph PASSED       [ 68%]
-tests/presolver/test_dsatur.py::test_dsatur_star_graph PASSED            [ 69%]
-tests/presolver/test_dsatur.py::test_dsatur_cycle_graph PASSED           [ 70%]
-tests/presolver/test_dsatur.py::test_dsatur_wheel_graph PASSED           [ 71%]
-tests/presolver/test_dsatur.py::test_dsatur_room_slot_lock PASSED        [ 72%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_empty_timetable PASSED [ 73%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_no_slots_fails PASSED [ 74%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_no_rooms_fails PASSED [ 75%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_successful_single PASSED [ 75%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_faculty_clash_prevented PASSED [ 76%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_section_clash_prevented PASSED [ 77%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_room_clash_prevented PASSED [ 78%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_holiday_bypassed PASSED [ 79%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_room_capacity_check PASSED [ 80%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_mrv_priority PASSED [ 81%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_degree_priority_tie_break PASSED [ 82%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_locked_assignments_preserved PASSED [ 83%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_locked_prevents_unlocked_sharing PASSED [ 84%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_failed_count_incremented PASSED [ 85%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_success_rate_calculation PASSED [ 86%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_runtime_ms_recorded PASSED [ 87%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_earliest_slot_selected PASSED [ 88%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_lexicographical_tie_break PASSED [ 89%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_empty_unlocked_success_rate PASSED [ 90%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_extreme_over_allocation PASSED [ 91%]
-tests/scheduler/test_greedy_scheduler.py::test_scheduler_unlocked_domain_reduction_by_locked PASSED [ 92%]
-tests/validation/test_validators.py::test_base_validator_enforce_and_async PASSED [ 93%]
-tests/validation/test_validators.py::test_composite_validator PASSED     [ 94%]
-tests/validation/test_validators.py::test_faculty_validator PASSED       [ 95%]
-tests/validation/test_validators.py::test_room_validator PASSED          [ 96%]
-tests/validation/test_validators.py::test_subject_validator PASSED       [ 97%]
-tests/validation/test_validators.py::test_calendar_validator PASSED      [ 98%]
-tests/validation/test_validators.py::test_section_validator PASSED       [ 99%]
-tests/validation/test_validators.py::test_timetable_validator PASSED     [100%]
+tests\constraints\test_constraints.py ............                       [  5%]
+tests\graph\test_graph.py ...................                            [ 14%]
+tests\models\test_models.py ..................                           [ 22%]
+tests\models\test_refactored_models.py ..............................    [ 36%]
+tests\presolver\test_dsatur.py ..........................                [ 48%]
+tests\problem\test_instance.py ...........................               [ 61%]
+tests\scheduler\test_greedy_scheduler.py .....................           [ 70%]
+tests\session\test_session_generator.py .............................    [ 84%]
+tests\solver\test_solver_contracts.py ..........................         [ 96%]
+tests\validation\test_validators.py ........                             [100%]
 
-================================== FAILURES ===================================
-_________________________ test_builder_faculty_clash __________________________
-tests\graph\test_graph.py:111: in test_builder_faculty_clash
-    export_png(graph, OUTPUT_DIR / "faculty_clash_graph.png")
-brain\graph\visualizer.py:18: in export_png
-    plt.figure(figsize=(10, 8), dpi=150)
-..\..\AppData\Roaming\Python\Python311\site-packages\matplotlib\pyplot.py:934: in figure
-    manager = new_figure_manager(
-..\..\AppData\Roaming\Python\Python311\site-packages\matplotlib\pyplot.py:465: in new_figure_manager
-    return _get_backend_mod().new_figure_manager(*args, **kwargs)
-..\..\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py:3402: in new_figure_manager
-    return cls.new_figure_manager_given_figure(num, fig)
-..\..\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py:3407: in new_figure_manager_given_figure
-    return cls.FigureCanvas.new_manager(figure, num)
-..\..\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py:1785: in new_manager
-    return cls.manager_class.create_with_canvas(cls, figure, num)
-..\..\AppData\Roaming\Python\Python311\site-packages\matplotlib\backends\_backend_tk.py:486: in create_with_canvas
-    window = tk.Tk(className="matplotlib")
-C:\Program Files\Python311\Lib\tkinter\__init__.py:2345: in __init__
-    self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
-E   _tkinter.TclError: Can't find a usable tk.tcl in the following directories: 
-E       {C:/Program Files/Python311/tcl/tcl8.6/tk8.6} {C:/Program Files/Python311/tcl/tk8.6} {C:/Program Files/lib/tk8.6} {C:/Program Files/lib/tk8.6} C:/lib/tk8.6 {C:/Program Files/library}
-E   
-E   C:/Program Files/Python311/tcl/tk8.6/tk.tcl: couldn't read file "C:/Program Files/Python311/tcl/tk8.6/button.tcl": no such file or directory
-E   couldn't read file "C:/Program Files/Python311/tcl/tk8.6/button.tcl": no such file or directory
-E       while executing
-E   "source -encoding utf-8 {C:/Program Files/Python311/tcl/tk8.6/button.tcl}"
-E       (in namespace eval "::" script line 1)
-E       invoked from within
-E   "namespace eval :: [list source -encoding utf-8 [file join $::tk_library $file.tcl]]"
-E       (procedure "SourceLibFile" line 2)
-E       invoked from within
-E   "SourceLibFile button"
-E       (in namespace eval "::tk" script line 3)
-E       invoked from within
-E   "namespace eval ::tk {
-E   	SourceLibFile icons
-E   	SourceLibFile button
-E   	SourceLibFile entry
-E   	SourceLibFile listbox
-E   	SourceLibFile menu
-E   	SourceLibFile panedw..."
-E       (file "C:/Program Files/Python311/tcl/tk8.6/tk.tcl" line 501)
-E       invoked from within
-E   "source {C:/Program Files/Python311/tcl/tk8.6/tk.tcl}"
-E       ("uplevel" body line 1)
-E       invoked from within
-E   "uplevel #0 [list source $file]"
-E   
-E   
-E   This probably means that tk wasn't installed properly.
-_________________________ test_builder_section_clash __________________________
-tests\graph\test_graph.py:173: in test_builder_section_clash
-    export_png(graph, OUTPUT_DIR / "section_clash_graph.png")
-brain\graph\visualizer.py:18: in export_png
-    plt.figure(figsize=(10, 8), dpi=150)
-..\..\AppData\Roaming\Python\Python311\site-packages\matplotlib\pyplot.py:934: in figure
-    manager = new_figure_manager(
-..\..\AppData\Roaming\Python\Python311\site-packages\matplotlib\pyplot.py:465: in new_figure_manager
-    return _get_backend_mod().new_figure_manager(*args, **kwargs)
-..\..\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py:3402: in new_figure_manager
-    return cls.new_figure_manager_given_figure(num, fig)
-..\..\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py:3407: in new_figure_manager_given_figure
-    return cls.FigureCanvas.new_manager(figure, num)
-..\..\AppData\Roaming\Python\Python311\site-packages\matplotlib\backend_bases.py:1785: in new_manager
-    return cls.manager_class.create_with_canvas(cls, figure, num)
-..\..\AppData\Roaming\Python\Python311\site-packages\matplotlib\backends\_backend_tk.py:486: in create_with_canvas
-    window = tk.Tk(className="matplotlib")
-C:\Program Files\Python311\Lib\tkinter\__init__.py:2345: in __init__
-    self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
-E   _tkinter.TclError: invalid command name "tcl_findLibrary"
-=========================== short test summary info ===========================
-FAILED tests/graph/test_graph.py::test_builder_faculty_clash - _tkinter.TclEr...
-FAILED tests/graph/test_graph.py::test_builder_section_clash - _tkinter.TclEr...
-======================= 2 failed, 102 passed in 13.29s ========================
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.12.6-final-0 _______________
+
+Name                                            Stmts   Miss  Cover   Missing
+-----------------------------------------------------------------------------
+brain\__init__.py                                   0      0   100%
+brain\constraints\__init__.py                       6      0   100%
+brain\constraints\base.py                          24      1    96%   54
+brain\constraints\builder.py                       27      0   100%
+brain\constraints\constraint_set.py                31      0   100%
+brain\constraints\factory.py                        8      0   100%
+brain\constraints\hard\credit_completion.py        23      0   100%
+brain\constraints\hard\faculty_overlap.py          16      0   100%
+brain\constraints\hard\holiday.py                  12      0   100%
+brain\constraints\hard\room_overlap.py             16      0   100%
+brain\constraints\registry.py                      15      0   100%
+brain\constraints\soft\balanced_workload.py        20      0   100%
+brain\constraints\soft\building_preference.py      32      0   100%
+brain\constraints\soft\minimum_gap.py              27      0   100%
+brain\constraints\soft\morning_preference.py       14      0   100%
+brain\graph\__init__.py                             4      0   100%
+brain\graph\builder.py                             40      0   100%
+brain\graph\metrics.py                             34      2    94%   94, 102
+brain\graph\visualizer.py                          21      0   100%
+brain\models\__init__.py                           15      0   100%
+brain\models\assignment.py                         16      0   100%
+brain\models\conflict.py                           15      0   100%
+brain\models\constraint.py                         24      0   100%
+brain\models\curriculum.py                         23      0   100%
+brain\models\exceptions.py                         12      0   100%
+brain\models\faculty.py                            29      0   100%
+brain\models\room.py                               25      0   100%
+brain\models\scheduled_assignment.py               32      0   100%
+brain\models\score.py                              30      0   100%
+brain\models\section.py                            26      0   100%
+brain\models\slot.py                               29      0   100%
+brain\models\subject.py                            23      0   100%
+brain\models\teaching_requirement.py               32      0   100%
+brain\models\timetable.py                          21      0   100%
+brain\presolver\__init__.py                         2      0   100%
+brain\presolver\dsatur.py                          64      0   100%
+brain\problem\__init__.py                           5      0   100%
+brain\problem\instance_builder.py                  61      0   100%
+brain\problem\instance_serializer.py                6      0   100%
+brain\problem\instance_validator.py                41      0   100%
+brain\problem\scheduling_instance.py               56      0   100%
+brain\scheduler\__init__.py                         2      0   100%
+brain\scheduler\greedy_scheduler.py               105      0   100%
+brain\session\__init__.py                           5      0   100%
+brain\session\session.py                           45      0   100%
+brain\session\session_factory.py                    8      0   100%
+brain\session\session_generator.py                 47      0   100%
+brain\session\session_statistics.py                 9      0   100%
+brain\validation\__init__.py                        8      0   100%
+brain\validation\base.py                           33      1    97%   56
+brain\validation\calendar_validator.py             16      0   100%
+brain\validation\faculty_validator.py              24      0   100%
+brain\validation\room_validator.py                 20      0   100%
+brain\validation\section_validator.py              22      0   100%
+brain\validation\subject_validator.py              21      0   100%
+brain\validation\validator.py                      56      0   100%
+-----------------------------------------------------------------------------
+TOTAL                                            1378      4    99%
+============================ 216 passed in 11.64s =============================
+
