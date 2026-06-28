@@ -1,7 +1,7 @@
 """Base classes and interfaces for validation in HanuPlanner Brain."""
 
 from abc import ABC, abstractmethod
-from typing import TypeVar, Generic
+from typing import Generic, TypeVar
 
 from pydantic import BaseModel, ConfigDict, Field
 

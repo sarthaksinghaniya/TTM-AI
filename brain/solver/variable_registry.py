@@ -4,10 +4,10 @@ from .variable import Variable
 
 class VariableRegistry:
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._variables: dict[str, Variable] = {}
 
-    def register(self, variable: Variable):
+    def register(self, variable: Variable) -> None:
 
         if variable.name in self._variables:
             raise VariableAlreadyExistsError(
@@ -22,16 +22,16 @@ class VariableRegistry:
     def get(self, name: str) -> Variable:
         return self._variables[name]
 
-    def clear(self):
+    def clear(self) -> None:
         self._variables.clear()
 
     def count(self) -> int:
         return len(self._variables)
 
-    def all(self):
+    def all(self) -> list[Variable]:
         return list(self._variables.values())
 
-    def export(self):
+    def export(self) -> list[dict[str, object]]:
         return [
             variable.model_dump(mode="json")
             for variable in self._variables.values()

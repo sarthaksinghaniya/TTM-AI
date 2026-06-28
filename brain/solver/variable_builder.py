@@ -1,4 +1,7 @@
 #generic template rn
+from collections.abc import Callable
+from typing import Any
+
 from .variable import (
     AssignmentVariable,
     IntervalVariable,
@@ -14,24 +17,24 @@ class VariableBuilder:
 
     def __init__(
         self,
-        constraint_set,
-        graph,
+        constraint_set: Any,
+        graph: Any,
         registry: VariableRegistry | None = None,
-    ):
+    ) -> None:
         self.constraint_set = constraint_set
         self.graph = graph
         self._registry = registry or VariableRegistry()
 
     @property
-    def registry(self):
+    def registry(self) -> VariableRegistry:
         return self._registry
 
     def build_assignment_variables(
         self,
-        lectures,
-        feasible_rooms,
-        feasible_slots,
-    ):
+        lectures: Any,
+        feasible_rooms: Callable[[Any], Any],
+        feasible_slots: Callable[[Any], Any],
+    ) -> None:
 
         for lecture in lectures:
 
@@ -75,9 +78,9 @@ class VariableBuilder:
 
     def build_room_variables(
         self,
-        lectures,
-        feasible_rooms,
-    ):
+        lectures: Any,
+        feasible_rooms: Callable[[Any], Any],
+    ) -> None:
 
         for lecture in lectures:
 
@@ -111,9 +114,9 @@ class VariableBuilder:
 
     def build_slot_variables(
         self,
-        lectures,
-        feasible_slots,
-    ):
+        lectures: Any,
+        feasible_slots: Callable[[Any], Any],
+    ) -> None:
 
         for lecture in lectures:
 
@@ -147,8 +150,8 @@ class VariableBuilder:
 
     def build_interval_variables(
         self,
-        lectures,
-    ):
+        lectures: Any,
+    ) -> None:
 
         for lecture in lectures:
 
