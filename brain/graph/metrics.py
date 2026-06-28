@@ -3,6 +3,7 @@
 from pathlib import Path
 
 import networkx as nx
+import numpy as np
 
 
 def connected_components(graph: nx.Graph) -> list[list[str]]:
@@ -77,3 +78,24 @@ def export_graphml(graph: nx.Graph, path: str | Path) -> None:
         if "assignment" in temp_graph.nodes[node]:
             del temp_graph.nodes[node]["assignment"]
     nx.write_graphml(temp_graph, str(path))
+
+
+def export_adjacency_matrix(graph: nx.Graph, path: str | Path) -> None:
+    """Export the adjacency matrix of the conflict graph to a file.
+
+    Args:
+        graph: The networkx.Graph instance.
+        path: Filepath to write the adjacency matrix to (supports .npy, .csv, .txt).
+    """
+    adjacency_matrix = nx.to_numpy_array(graph)
+    path_str = str(path)
+    
+    if path_str.endswith('.npy'):
+        np.save(path_str, adjacency_matrix)
+    elif path_str.endswith('.csv'):
+        import pandas as pd
+        node_names = list(graph.nodes())
+        df = pd.DataFrame(adjacency_matrix, index=node_names, columns=node_names)
+        df.to_csv(path_str)
+    else:
+        np.savetxt(path_str, adjacency_matrix, fmt='%d')

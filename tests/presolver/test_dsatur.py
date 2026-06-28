@@ -1,11 +1,15 @@
 """Tests for HanuPlanner Brain DSATUR graph coloring presolver."""
 
 import datetime
+from pathlib import Path
 
 import networkx as nx
 import pytest
 
 from brain.constraints.base import ConstraintContext
+from brain.graph.builder import ConflictGraphBuilder
+from brain.graph.metrics import export_adjacency_matrix, export_graphml
+from brain.graph.visualizer import export_png
 from brain.models import (
     Assignment,
     Day,
@@ -16,6 +20,10 @@ from brain.models import (
     Timetable,
 )
 from brain.presolver.dsatur import DSATURSolver
+
+# Output directory for saving graphs and matrices
+OUTPUT_DIR = Path(__file__).parent.parent.parent / "output"
+OUTPUT_DIR.mkdir(exist_ok=True)
 
 
 def test_dsatur_empty_timetable() -> None:
@@ -66,6 +74,11 @@ def test_dsatur_saturation_degree_calculation_empty() -> None:
     assert len(sat_degrees) == 4
     # All saturation degrees must be 0
     assert all(d == 0 for d in sat_degrees.values())
+    
+    # Save graph to output folder
+    export_graphml(g, OUTPUT_DIR / "dsatur_cycle_graph.graphml")
+    export_png(g, OUTPUT_DIR / "dsatur_cycle_graph.png")
+    export_adjacency_matrix(g, OUTPUT_DIR / "dsatur_cycle_matrix.csv")
 
 
 def test_dsatur_saturation_degree_calculation_partial() -> None:
@@ -83,6 +96,11 @@ def test_dsatur_saturation_degree_calculation_partial() -> None:
     assert len(sat_degrees) == 1
     # C's neighbors (A, B) have 2 distinct colors
     assert sat_degrees["C"] == 2
+    
+    # Save graph to output folder
+    export_graphml(g, OUTPUT_DIR / "dsatur_partial_graph.graphml")
+    export_png(g, OUTPUT_DIR / "dsatur_partial_graph.png")
+    export_adjacency_matrix(g, OUTPUT_DIR / "dsatur_partial_matrix.csv")
 
 
 def test_dsatur_select_vertex_empty_error() -> None:
@@ -482,6 +500,12 @@ def test_dsatur_multiple_clashes_degree() -> None:
     # Check distinct slots (no clashes)
     s_ids = {a.slot_id for a in result.assignments}
     assert len(s_ids) == 3
+    
+    # Save conflict graph to output folder
+    graph = ConflictGraphBuilder.build_graph(t)
+    export_graphml(graph, OUTPUT_DIR / "dsatur_multiple_clashes_graph.graphml")
+    export_png(graph, OUTPUT_DIR / "dsatur_multiple_clashes_graph.png")
+    export_adjacency_matrix(graph, OUTPUT_DIR / "dsatur_multiple_clashes_matrix.csv")
 
 
 def test_dsatur_unconnected_subgraphs() -> None:
@@ -572,6 +596,12 @@ def test_dsatur_complete_graph_clique() -> None:
     )
     result = solver.partial_schedule(t, context)
     assert len(result.assignments) == 3
+    
+    # Save conflict graph to output folder
+    graph = ConflictGraphBuilder.build_graph(t)
+    export_graphml(graph, OUTPUT_DIR / "dsatur_clique_graph.graphml")
+    export_png(graph, OUTPUT_DIR / "dsatur_clique_graph.png")
+    export_adjacency_matrix(graph, OUTPUT_DIR / "dsatur_clique_matrix.csv")
 
 
 def test_dsatur_bipartite_graph() -> None:
@@ -622,6 +652,12 @@ def test_dsatur_bipartite_graph() -> None:
     )
     result = solver.partial_schedule(t, context)
     assert len(result.assignments) == 3
+    
+    # Save conflict graph to output folder
+    graph = ConflictGraphBuilder.build_graph(t)
+    export_graphml(graph, OUTPUT_DIR / "dsatur_bipartite_graph.graphml")
+    export_png(graph, OUTPUT_DIR / "dsatur_bipartite_graph.png")
+    export_adjacency_matrix(graph, OUTPUT_DIR / "dsatur_bipartite_matrix.csv")
 
 
 def test_dsatur_star_graph() -> None:
@@ -677,6 +713,12 @@ def test_dsatur_star_graph() -> None:
     )
     result = solver.partial_schedule(t, context)
     assert len(result.assignments) == 3
+    
+    # Save conflict graph to output folder
+    graph = ConflictGraphBuilder.build_graph(t)
+    export_graphml(graph, OUTPUT_DIR / "dsatur_star_graph.graphml")
+    export_png(graph, OUTPUT_DIR / "dsatur_star_graph.png")
+    export_adjacency_matrix(graph, OUTPUT_DIR / "dsatur_star_matrix.csv")
 
 
 def test_dsatur_cycle_graph() -> None:
@@ -728,6 +770,12 @@ def test_dsatur_cycle_graph() -> None:
     )
     result = solver.partial_schedule(t, context)
     assert len(result.assignments) == 3
+    
+    # Save conflict graph to output folder
+    graph = ConflictGraphBuilder.build_graph(t)
+    export_graphml(graph, OUTPUT_DIR / "dsatur_cycle_graph.graphml")
+    export_png(graph, OUTPUT_DIR / "dsatur_cycle_graph.png")
+    export_adjacency_matrix(graph, OUTPUT_DIR / "dsatur_cycle_matrix.csv")
 
 
 def test_dsatur_wheel_graph() -> None:
@@ -782,6 +830,12 @@ def test_dsatur_wheel_graph() -> None:
     )
     result = solver.partial_schedule(t, context)
     assert len(result.assignments) == 3
+    
+    # Save conflict graph to output folder
+    graph = ConflictGraphBuilder.build_graph(t)
+    export_graphml(graph, OUTPUT_DIR / "dsatur_wheel_graph.graphml")
+    export_png(graph, OUTPUT_DIR / "dsatur_wheel_graph.png")
+    export_adjacency_matrix(graph, OUTPUT_DIR / "dsatur_wheel_matrix.csv")
 
 
 def test_dsatur_room_slot_lock() -> None:

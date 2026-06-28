@@ -1,10 +1,13 @@
 """Base classes and interfaces for validation in HanuPlanner Brain."""
 
 from abc import ABC, abstractmethod
+from typing import TypeVar, Generic
 
 from pydantic import BaseModel, ConfigDict, Field
 
 from brain.models.exceptions import ValidationError
+
+T = TypeVar('T')
 
 
 class ValidationWarning(BaseModel):
@@ -37,7 +40,7 @@ class ValidationResult(BaseModel):
     warnings: list[ValidationWarning] = Field(default_factory=list)
 
 
-class BaseValidator[T](ABC):
+class BaseValidator(ABC, Generic[T]):
     """Abstract base class for all validators in the scheduling engine."""
 
     @abstractmethod
