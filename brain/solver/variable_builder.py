@@ -1,4 +1,4 @@
-#generic template rn
+# generic template rn
 from collections.abc import Callable
 from typing import Any
 
@@ -14,7 +14,6 @@ from .variable_types import VariableType
 
 
 class VariableBuilder:
-
     def __init__(
         self,
         constraint_set: Any,
@@ -37,33 +36,25 @@ class VariableBuilder:
     ) -> None:
 
         for lecture in lectures:
-
             rooms = feasible_rooms(lecture)
 
             slots = feasible_slots(lecture)
 
             for room in rooms:
-
                 for slot in slots:
-
                     variable = AssignmentVariable(
-
                         name=VariableEncoder.assignment(
                             lecture.id,
                             room.id,
                             slot.id,
                         ),
-
                         kind=VariableType.ASSIGNMENT,
-
                         lower_bound=0,
                         upper_bound=1,
-
                         lecture_id=lecture.id,
                         faculty_id=lecture.faculty_id,
                         room_id=room.id,
                         slot_id=slot.id,
-
                         metadata={
                             "lecture_id": lecture.id,
                             "faculty_id": lecture.faculty_id,
@@ -83,24 +74,17 @@ class VariableBuilder:
     ) -> None:
 
         for lecture in lectures:
-
             for room in feasible_rooms(lecture):
-
                 variable = RoomVariable(
-
                     name=VariableEncoder.room(
                         lecture.id,
                         room.id,
                     ),
-
                     kind=VariableType.ROOM,
-
                     lower_bound=0,
                     upper_bound=1,
-
                     lecture_id=lecture.id,
                     room_id=room.id,
-
                     metadata={
                         "lecture_id": lecture.id,
                         "faculty_id": lecture.faculty_id,
@@ -119,24 +103,17 @@ class VariableBuilder:
     ) -> None:
 
         for lecture in lectures:
-
             for slot in feasible_slots(lecture):
-
                 variable = SlotVariable(
-
                     name=VariableEncoder.slot(
                         lecture.id,
                         slot.id,
                     ),
-
                     kind=VariableType.SLOT,
-
                     lower_bound=0,
                     upper_bound=1,
-
                     lecture_id=lecture.id,
                     slot_id=slot.id,
-
                     metadata={
                         "lecture_id": lecture.id,
                         "faculty_id": lecture.faculty_id,
@@ -154,20 +131,14 @@ class VariableBuilder:
     ) -> None:
 
         for lecture in lectures:
-
             variable = IntervalVariable(
-
                 name=VariableEncoder.interval(
                     lecture.id,
                 ),
-
                 kind=VariableType.INTERVAL,
-
                 lower_bound=0,
                 upper_bound=0,
-
                 lecture_id=lecture.id,
-
                 metadata={
                     "lecture_id": lecture.id,
                     "faculty_id": lecture.faculty_id,

@@ -1,5 +1,4 @@
 class VariableEncoder:
-
     @staticmethod
     def assignment(
         lecture_id: str,

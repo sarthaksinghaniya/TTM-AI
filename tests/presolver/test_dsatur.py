@@ -74,7 +74,7 @@ def test_dsatur_saturation_degree_calculation_empty() -> None:
     assert len(sat_degrees) == 4
     # All saturation degrees must be 0
     assert all(d == 0 for d in sat_degrees.values())
-    
+
     # Save graph to output folder
     export_graphml(g, OUTPUT_DIR / "dsatur_cycle_graph.graphml")
     export_png(g, OUTPUT_DIR / "dsatur_cycle_graph.png")
@@ -96,7 +96,7 @@ def test_dsatur_saturation_degree_calculation_partial() -> None:
     assert len(sat_degrees) == 1
     # C's neighbors (A, B) have 2 distinct colors
     assert sat_degrees["C"] == 2
-    
+
     # Save graph to output folder
     export_graphml(g, OUTPUT_DIR / "dsatur_partial_graph.graphml")
     export_png(g, OUTPUT_DIR / "dsatur_partial_graph.png")
@@ -500,7 +500,7 @@ def test_dsatur_multiple_clashes_degree() -> None:
     # Check distinct slots (no clashes)
     s_ids = {a.slot_id for a in result.assignments}
     assert len(s_ids) == 3
-    
+
     # Save conflict graph to output folder
     graph = ConflictGraphBuilder.build_graph(t)
     export_graphml(graph, OUTPUT_DIR / "dsatur_multiple_clashes_graph.graphml")
@@ -596,7 +596,7 @@ def test_dsatur_complete_graph_clique() -> None:
     )
     result = solver.partial_schedule(t, context)
     assert len(result.assignments) == 3
-    
+
     # Save conflict graph to output folder
     graph = ConflictGraphBuilder.build_graph(t)
     export_graphml(graph, OUTPUT_DIR / "dsatur_clique_graph.graphml")
@@ -652,7 +652,7 @@ def test_dsatur_bipartite_graph() -> None:
     )
     result = solver.partial_schedule(t, context)
     assert len(result.assignments) == 3
-    
+
     # Save conflict graph to output folder
     graph = ConflictGraphBuilder.build_graph(t)
     export_graphml(graph, OUTPUT_DIR / "dsatur_bipartite_graph.graphml")
@@ -713,7 +713,7 @@ def test_dsatur_star_graph() -> None:
     )
     result = solver.partial_schedule(t, context)
     assert len(result.assignments) == 3
-    
+
     # Save conflict graph to output folder
     graph = ConflictGraphBuilder.build_graph(t)
     export_graphml(graph, OUTPUT_DIR / "dsatur_star_graph.graphml")
@@ -770,7 +770,7 @@ def test_dsatur_cycle_graph() -> None:
     )
     result = solver.partial_schedule(t, context)
     assert len(result.assignments) == 3
-    
+
     # Save conflict graph to output folder
     graph = ConflictGraphBuilder.build_graph(t)
     export_graphml(graph, OUTPUT_DIR / "dsatur_cycle_graph.graphml")
@@ -830,7 +830,7 @@ def test_dsatur_wheel_graph() -> None:
     )
     result = solver.partial_schedule(t, context)
     assert len(result.assignments) == 3
-    
+
     # Save conflict graph to output folder
     graph = ConflictGraphBuilder.build_graph(t)
     export_graphml(graph, OUTPUT_DIR / "dsatur_wheel_graph.graphml")

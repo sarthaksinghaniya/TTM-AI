@@ -47,7 +47,7 @@ def test_builder_single_assignment() -> None:
     assert graph.number_of_edges() == 0
     assert "A1" in graph.nodes
     assert graph.nodes["A1"]["assignment"] == a
-    
+
     # Save graph to output folder
     export_graphml(graph, OUTPUT_DIR / "single_assignment_graph.graphml")
     export_png(graph, OUTPUT_DIR / "single_assignment_graph.png")
@@ -105,7 +105,7 @@ def test_builder_faculty_clash() -> None:
     assert edge_data["reason"] == "Share faculty 'F1'"
     assert edge_data["constraint_type"] == "hard"
     assert edge_data["weight"] == 1.0
-    
+
     # Save graph to output folder
     export_graphml(graph, OUTPUT_DIR / "faculty_clash_graph.graphml")
     export_png(graph, OUTPUT_DIR / "faculty_clash_graph.png")
@@ -136,7 +136,7 @@ def test_builder_room_clash() -> None:
     assert graph.number_of_edges() == 1
     assert graph.has_edge("A1", "A2")
     assert graph["A1"]["A2"]["reason"] == "Share room 'R1'"
-    
+
     # Save graph to output folder
     export_graphml(graph, OUTPUT_DIR / "room_clash_graph.graphml")
     export_png(graph, OUTPUT_DIR / "room_clash_graph.png")
@@ -167,7 +167,7 @@ def test_builder_section_clash() -> None:
     assert graph.number_of_edges() == 1
     assert graph.has_edge("A1", "A2")
     assert graph["A1"]["A2"]["reason"] == "Share section 'SEC_A'"
-    
+
     # Save graph to output folder
     export_graphml(graph, OUTPUT_DIR / "section_clash_graph.graphml")
     export_png(graph, OUTPUT_DIR / "section_clash_graph.png")
@@ -200,7 +200,7 @@ def test_builder_multiple_clashes_reason_concatenation() -> None:
     assert "Share faculty 'F1'" in reason
     assert "Share room 'R1'" in reason
     assert "Share section 'SEC_A'" in reason
-    
+
     # Save graph to output folder
     export_graphml(graph, OUTPUT_DIR / "multiple_clashes_graph.graphml")
     export_png(graph, OUTPUT_DIR / "multiple_clashes_graph.png")
@@ -229,7 +229,7 @@ def test_builder_no_clashes() -> None:
     graph = ConflictGraphBuilder.build_graph(t)
     assert graph.number_of_nodes() == 2
     assert graph.number_of_edges() == 0
-    
+
     # Save graph to output folder
     export_graphml(graph, OUTPUT_DIR / "no_clashes_graph.graphml")
     export_png(graph, OUTPUT_DIR / "no_clashes_graph.png")

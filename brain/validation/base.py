@@ -7,7 +7,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from brain.models.exceptions import ValidationError
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 class ValidationWarning(BaseModel):

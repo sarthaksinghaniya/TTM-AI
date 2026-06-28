@@ -3,7 +3,6 @@ from .variable import Variable
 
 
 class VariableRegistry:
-
     def __init__(self) -> None:
         self._variables: dict[str, Variable] = {}
 
@@ -33,6 +32,5 @@ class VariableRegistry:
 
     def export(self) -> list[dict[str, object]]:
         return [
-            variable.model_dump(mode="json")
-            for variable in self._variables.values()
+            variable.model_dump(mode="json") for variable in self._variables.values()
         ]

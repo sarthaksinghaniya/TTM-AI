@@ -80,9 +80,7 @@ class ScheduledAssignment(BaseModel):
         return v
 
     @classmethod
-    def from_assignment(
-        cls, assignment: Assignment, day: Day, duration: int
-    ) -> Self:
+    def from_assignment(cls, assignment: Assignment, day: Day, duration: int) -> Self:
         """Migrate from the older Assignment model format.
 
         Args:

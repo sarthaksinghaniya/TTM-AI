@@ -512,9 +512,7 @@ def test_curriculum_serialization_roundtrip() -> None:
         batch="Batch A",
         constraint_refs=[],
     )
-    cur = Curriculum(
-        curriculum_id="CUR_01", name="CS Curriculum", requirements=[req]
-    )
+    cur = Curriculum(curriculum_id="CUR_01", name="CS Curriculum", requirements=[req])
     json_str = cur.model_dump_json()
     deserialized = Curriculum.model_validate_json(json_str)
     assert deserialized.curriculum_id == cur.curriculum_id

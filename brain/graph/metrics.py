@@ -89,13 +89,14 @@ def export_adjacency_matrix(graph: nx.Graph, path: str | Path) -> None:
     """
     adjacency_matrix = nx.to_numpy_array(graph)
     path_str = str(path)
-    
-    if path_str.endswith('.npy'):
+
+    if path_str.endswith(".npy"):
         np.save(path_str, adjacency_matrix)
-    elif path_str.endswith('.csv'):
+    elif path_str.endswith(".csv"):
         import pandas as pd
+
         node_names = list(graph.nodes())
         df = pd.DataFrame(adjacency_matrix, index=node_names, columns=node_names)
         df.to_csv(path_str)
     else:
-        np.savetxt(path_str, adjacency_matrix, fmt='%d')
+        np.savetxt(path_str, adjacency_matrix, fmt="%d")
